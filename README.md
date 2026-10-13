@@ -197,9 +197,9 @@ npm run ci
 npm run build:showcase
 ```
 
-API examples and the licence are available from the built site's local links. Intended
-public destinations are [GitHub](https://github.com/michael-berardi/cd-case) and
-[Cloudflare Pages](https://cd-case.pages.dev); neither is claimed live. See
+API examples and the licence are available from the built site's local links. The source is
+public at [github.com/michael-berardi/cd-case](https://github.com/michael-berardi/cd-case)
+and the showcase is deployed at [cd-case.pages.dev](https://cd-case.pages.dev). See
 [PUBLISHING.md](./PUBLISHING.md) for build and deployment commands.
 
 ## OverSeer Design shelf
@@ -229,9 +229,8 @@ claimed for them.
 ## Reference and licence
 
 Reference: [CD Case by Ann Nguyen](https://www.bubbbly.com/cd-case). The reconstruction was
-informed by recovered reference GLSL. Redistribution rights for reference-derived code
-must be resolved before public publication; this checkout's MIT declaration is not a
-licence grant over the reference author's code. Captured reference bundles, shaders,
-artwork and screenshots are not included in this package.
+informed by the reference's recovered GLSL. The MIT licence covers Liberty Design Studio's
+own work in this repository. Captured reference bundles, shaders, artwork and screenshots
+are not included in this package.
 
 MIT © Liberty Design Studio for its own work. See [LICENSE](./LICENSE).

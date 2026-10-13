@@ -48,10 +48,10 @@ The provided deployment script targets the Pages project `cd-case`:
 npm run deploy
 ```
 
-Cloudflare credentials and an existing Pages project are required. Retain the previous
-Pages deployment ID for rollback. The site currently uses noindex; remove it only when
-public release is cleared. The intended URL is https://cd-case.pages.dev, not a claim
-that deployment has occurred.
+Cloudflare credentials and the `cd-case` Pages project are required. `wrangler pages deploy`
+is used because `cf pages deploy` is still a stub in the beta CLI. Record the new deployment
+ID and keep the previous one for rollback: https://cd-case.pages.dev serves the latest
+production deployment.
 
-Resolve the reference-derived code's redistribution rights before any public source,
-package or website publication. See the attribution and licence section in README.md.
+Current production deployment: `df0177ef-f4ee-4987-8b13-5a46e93e462b` (source commit
+`11179a2`, no earlier deployment existed to roll back to).
