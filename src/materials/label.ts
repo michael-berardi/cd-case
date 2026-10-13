@@ -102,8 +102,8 @@ function drawPrintField(ctx: CanvasRenderingContext2D, size: number, design: Lab
     ctx.stroke();
   }
 
-  // A tick burst through the outer third gives the face the colour and grain
-  // the reference has, and gives the sparkle pass real peaks to catch.
+  // A tick burst through the outer third gives the face its colour and grain,
+  // and gives the sparkle pass real peaks to catch.
   ctx.lineWidth = Math.max(1, size / 900);
   const burstIn = c - 40 * pxPerMm;
   for (let i = 0; i < 240; i++) {

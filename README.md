@@ -218,7 +218,7 @@ of zero pinned files is not source or visual verification.
 The cloning capability can request REA evidence for a new reference capture:
 
 ```sh
-overseer design capture https://www.bubbbly.com/cd-case \
+overseer design capture https://example.com/some-page \
   --out /tmp/overseer-design --rea-provenance --module cd-case --json
 ```
 
@@ -226,11 +226,6 @@ A failing or missing REA reports no recorded provenance without replacing REA wi
 ad-hoc engine. Existing observations are not REA evidence, and no REA Evidence ID is
 claimed for them.
 
-## Reference and licence
+## Licence
 
-Reference: [CD Case by Ann Nguyen](https://www.bubbbly.com/cd-case). The reconstruction was
-informed by the reference's recovered GLSL. The MIT licence covers Liberty Design Studio's
-own work in this repository. Captured reference bundles, shaders, artwork and screenshots
-are not included in this package.
-
-MIT © Liberty Design Studio for its own work. See [LICENSE](./LICENSE).
+MIT © Liberty Design Studio. See [LICENSE](./LICENSE).
