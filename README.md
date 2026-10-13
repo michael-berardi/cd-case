@@ -193,16 +193,14 @@ The first-class showcase lives in [`showcase/`](./showcase/) and uses Astro with
 ```sh
 npm --prefix showcase ci
 npm run dev:showcase
-# Local/manual CI (no GitHub Actions):
-python3 ~/dev/scripts/build_queue.py --project cd-case --cwd "$PWD" -- npm run ci
-# Build through the LDS queue:
-python3 ~/dev/scripts/build_queue.py --project cd-case --cwd "$PWD" -- npm run build:showcase
+npm run ci
+npm run build:showcase
 ```
 
 API examples and the licence are available from the built site's local links. Intended
 public destinations are [GitHub](https://github.com/michael-berardi/cd-case) and
 [Cloudflare Pages](https://cd-case.pages.dev); neither is claimed live. See
-[PUBLISHING.md](./PUBLISHING.md) for release gates and deployment commands.
+[PUBLISHING.md](./PUBLISHING.md) for build and deployment commands.
 
 ## OverSeer Design shelf
 
@@ -225,16 +223,15 @@ overseer design capture https://www.bubbbly.com/cd-case \
 ```
 
 A failing or missing REA reports no recorded provenance without replacing REA with an
-ad-hoc engine. Existing CD-case evidence was collected with ad-hoc probes, not REA;
-no REA Evidence ID is claimed. Older renders do not prove the current shaders' appearance.
-Sol owns visual verification and final findings.
+ad-hoc engine. Existing observations are not REA evidence, and no REA Evidence ID is
+claimed for them.
 
 ## Reference and licence
 
 Reference: [CD Case by Ann Nguyen](https://www.bubbbly.com/cd-case). The reconstruction was
 informed by recovered reference GLSL. Redistribution rights for reference-derived code
 must be resolved before public publication; this checkout's MIT declaration is not a
-licence grant over the reference author's code. Historical captured bundles and extracted
-shaders remain in OverSeer's private evidence collection, not this package.
+licence grant over the reference author's code. Captured reference bundles, shaders,
+artwork and screenshots are not included in this package.
 
 MIT © Liberty Design Studio for its own work. See [LICENSE](./LICENSE).
