@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@overseer/cd-case — a CD jewel case in three.js</title>
+    <meta
+      name="description"
+      content="An interactive CD jewel case for three.js: a moulded polycarbonate shell, a diffraction-grating disc and a real hinge."
+    />
+    <style>
+      :root {
+        --ink: #eef2f8;
+        --muted: #8e9aab;
+        --line: #232a36;
+        --panel: #10141c;
+        --accent: #7fb2ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: #0b0d12;
+        color: var(--ink);
+        font: 400 15px/1.5 "Inter", "Helvetica Neue", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header,
+      footer {
+        padding: 14px 20px;
+        border-color: var(--line);
+        border-style: solid;
+        border-width: 0 0 1px;
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+        flex-wrap: wrap;
+      }
+
+      footer {
+        border-width: 1px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      h1 {
+        font-size: 15px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        min-height: 0;
+      }
+
+      .stage-wrap {
+        position: relative;
+        min-height: 0;
+      }
+
+      #stage {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hint {
+        position: absolute;
+        left: 20px;
+        bottom: 16px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        pointer-events: none;
+      }
+
+      .panel {
+        border-left: 1px solid var(--line);
+        background: var(--panel);
+        padding: 18px 20px 28px;
+        overflow-y: auto;
+      }
+
+      fieldset {
+        border: 0;
+        border-top: 1px solid var(--line);
+        margin: 0 0 4px;
+        padding: 15px 0 17px;
+      }
+
+      fieldset:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      legend {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 0 0 9px;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin: 10px 0 4px;
+      }
+
+      input,
+      textarea,
+      select,
+      button {
+        font: inherit;
+        color: var(--ink);
+        background: #0b0f16;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 7px 9px;
+        width: 100%;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 74px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+      }
+
+      input[type="color"] {
+        padding: 2px;
+        height: 34px;
+      }
+
+      input[type="range"] {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        accent-color: var(--accent);
+      }
+
+      .row {
+        display: flex;
+        gap: 8px;
+      }
+
+      .row > * {
+        width: auto;
+        flex: 1;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #37415180;
+        background: #141a24;
+      }
+
+      .status {
+        font-size: 12px;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+        margin: 14px 0 0;
+      }
+
+      .readout {
+        float: right;
+        color: var(--ink);
+      }
+
+      @media (max-width: 820px) {
+        main {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .stage-wrap {
+          min-height: 58vh;
+        }
+
+        .panel {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>CD jewel case</h1>
+      <p>
+        Moulded polycarbonate shell, diffraction-grating disc, real hinge — rendered by
+        <code>@overseer/cd-case</code>.
+      </p>
+    </header>
+
+    <main>
+      <section class="stage-wrap">
+        <div id="stage" aria-label="Interactive CD jewel case"></div>
+        <p class="hint">Drag to orbit. The first drag swings the lid open; the controls below do the same on demand.</p>
+      </section>
+
+      <aside class="panel">
+        <fieldset>
+          <legend>Hinge</legend>
+          <div class="row">
+            <button id="open" type="button">Open</button>
+            <button id="close" type="button">Close</button>
+            <button id="toggle" type="button">Toggle</button>
+          </div>
+          <label for="open-value">Lid travel <span class="readout" id="open-value">0.00</span></label>
+          <input id="open-slider" type="range" min="0" max="1" step="0.01" value="0" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Label</legend>
+          <label for="title">Title</label>
+          <input id="title" type="text" value="Refraction" autocomplete="off" />
+          <label for="subtitle">Subtitle</label>
+          <input id="subtitle" type="text" value="OverSeer Design" autocomplete="off" />
+          <label for="tracks">Tracks (one per line)</label>
+          <textarea id="tracks" spellcheck="false">Refraction
+Diffraction
+Hinge
+Crystal Clear</textarea>
+          <div class="row" style="margin-top: 10px">
+            <button id="print-label" type="button">Print label</button>
+            <button id="generated-label" type="button">Generated</button>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Accent</legend>
+          <label for="accent">Accent colour</label>
+          <input id="accent" type="color" value="#7fb2ff" />
+        </fieldset>
+
+        <fieldset>
+          <legend>Rendering</legend>
+          <label for="quality">Quality tier (rebuilds the scene)</label>
+          <select id="quality">
+            <option value="low">low</option>
+            <option value="medium" selected>medium</option>
+            <option value="high">high</option>
+          </select>
+          <label for="env">Environment light rig (rebuilds the scene)</label>
+          <select id="env">
+            <option value="studio" selected>studio</option>
+            <option value="void">void</option>
+            <option value="warm">warm</option>
+            <option value="night">night</option>
+          </select>
+          <div class="row" style="margin-top: 12px">
+            <button id="snapshot" type="button">Save PNG</button>
+            <button id="remount" type="button">Rebuild</button>
+          </div>
+        </fieldset>
+
+        <p class="status" id="status">ready</p>
+      </aside>
+    </main>
+
+    <footer>
+      The asset is modelled, not textured: the package ships no HDRI, model or texture files.
+      MIT © Liberty Design Studio.
+    </footer>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
