@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-demo/
+.astro/
+.cloudflare/
+.wrangler/
+showcase/public/README.md
+showcase/public/LICENSE.txt
+
+# Local scratch material
+.reference/
+review/
+scratch/
+
+# macOS
+.DS_Store

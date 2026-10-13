@@ -1,0 +1,25 @@
+{
+  "name": "@overseer/cd-case-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "node scripts/copy-docs.mjs && astro build",
+    "check": "astro check",
+    "preview": "astro preview --host 127.0.0.1",
+    "deploy": "npm run build && wrangler pages deploy dist/client --project-name cd-case"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "14.3.4",
+    "astro": "7.3.8",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.9",
+    "@types/three": "0.186.0",
+    "typescript": "5.9.3",
+    "wrangler": "4.125.0"
+  },
+  "engines": { "node": ">=22.12.0" }
+}
