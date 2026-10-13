@@ -53,6 +53,6 @@ is used because `cf pages deploy` is still a stub in the beta CLI. Record the ne
 ID and keep the previous one for rollback: https://cd-case.pages.dev serves the latest
 production deployment.
 
-Current production deployment: `3b9b47b7-472c-45b1-9dfb-c712ce9254b2` (source commit
-`603cfd7`). The previous production deployment `df0177ef-f4ee-4987-8b13-5a46e93e462b`
-(source commit `11179a2`) is kept as the rollback target; before it, no deployment existed.
+Current production deployment: `742c1ffe-9384-4d4a-8ca0-44c4ad6ae047` (source commit
+`1441026`). The previous production deployment `3b9b47b7-472c-45b1-9dfb-c712ce9254b2`
+(source commit `603cfd7`) is kept as the rollback target.
